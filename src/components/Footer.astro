@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.png';
+import { BUSINESS } from '../config/business';
+import { toTelHref } from '../utils/phone';
+
+const telHref = toTelHref(BUSINESS.phone);
+
+const areas = BUSINESS.areaServed;
+const areaText =
+  areas.length > 1
+    ? `${areas.slice(0, -1).join(', ')} and ${areas[areas.length - 1]}`
+    : areas[0];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <Image src={logo} alt={`${BUSINESS.name} logo`} width={74} height={74} style="height: 74px; width: auto;" />
+        <div class="wordmark">STREET DOGZ</div>
+        <p class="bio">{BUSINESS.description}</p>
+      </div>
+
+      <div>
+        <div class="col-heading">Contact</div>
+        <div class="col-list">
+          <span>{BUSINESS.name}</span>
+          <a href={telHref}>{BUSINESS.phone}</a>
+          <a href={`mailto:${BUSINESS.email}`} class="break">{BUSINESS.email}</a>
+          {BUSINESS.hours.map((entry) => (
+            <>
+              <span>Open {entry.days}</span>
+              <span>{entry.hours}</span>
+            </>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div class="col-heading">Service Area</div>
+        <p class="area">
+          Serving {areaText}. Hotdog food truck catering for corporate events, schools, picnics, churches, and daycares across the greater St. Louis area.
+        </p>
+      </div>
+
+      <div>
+        <div class="col-heading">Follow the truck</div>
+        <div class="col-list">
+          {BUSINESS.social.instagram && (
+            <a href={BUSINESS.social.instagram} target="_blank" rel="noopener" class="social">Instagram</a>
+          )}
+          {BUSINESS.social.facebook && (
+            <a href={BUSINESS.social.facebook} target="_blank" rel="noopener" class="social">Facebook</a>
+          )}
+          {BUSINESS.social.googleBusinessProfile && (
+            <a href={BUSINESS.social.googleBusinessProfile} target="_blank" rel="noopener" class="social">Google Business Profile</a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <span>© {year} {BUSINESS.name} · {BUSINESS.tagline}</span>
+      <span>{BUSINESS.addressLocality}, {BUSINESS.addressRegion} · Est. {BUSINESS.foundingDate}</span>
+      <span>
+        Website designed &amp; hosted by
+        <a href="https://www.digitaldowntownmain.com" target="_blank" rel="noopener" class="agency">Digital Downtown Main</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #2b1a12;
+    color: #e8d5c4;
+    padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 64px) 32px;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+  }
+  .wordmark {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 24px;
+    color: #ffc20e;
+    margin-top: 6px;
+  }
+  .bio {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 10px 0 0;
+    max-width: 320px;
+  }
+  .col-heading {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 18px;
+    color: #fff6ea;
+    margin-bottom: 14px;
+  }
+  .col-list {
+    display: grid;
+    gap: 9px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .col-list a {
+    color: #ffc20e;
+  }
+  .col-list a:hover {
+    color: #ffd84d;
+  }
+  .social {
+    color: #e8d5c4;
+  }
+  .social:hover {
+    color: #ffc20e;
+  }
+  .break {
+    word-break: break-all;
+  }
+  .area {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 600;
+  }
+  .bottom-bar {
+    border-top: 1px solid rgba(232, 213, 196, 0.2);
+    margin-top: 40px;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a08a7a;
+  }
+  .agency {
+    color: #ffc20e;
+  }
+  .agency:hover {
+    color: #ffd84d;
+  }
+</style>

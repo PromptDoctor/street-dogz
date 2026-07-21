@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.png';
+import { BUSINESS } from '../config/business';
+
+const navLinks = [
+  { label: 'Menu', href: '#menu' },
+  { label: 'Events', href: '#events' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<header class="nav">
+  <a href="#top" class="brand">
+    <Image
+      src={logo}
+      alt={`${BUSINESS.name} logo`}
+      width={42}
+      height={42}
+      style="height: 42px; width: auto;"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <span class="wordmark">STREET DOGZ</span>
+  </a>
+  <nav class="links" aria-label="Main navigation">
+    {navLinks.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+    <a href="#book" class="cta">Book Us</a>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #d82b27;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+    padding: 10px clamp(16px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff6ea;
+  }
+  .wordmark {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+    padding-top: 4px;
+  }
+  .links {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px clamp(10px, 2.5vw, 26px);
+  }
+  .links a {
+    color: #fff6ea;
+    font-weight: 800;
+    font-size: 15px;
+  }
+  .links a:hover {
+    color: #ffc20e;
+  }
+  .cta {
+    background: #ffc20e;
+    color: #2b1a12;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+  }
+  .cta:hover {
+    background: #ffd84d;
+    color: #2b1a12;
+    transform: translateY(-1px);
+  }
+</style>

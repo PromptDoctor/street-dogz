@@ -9,14 +9,79 @@ interface Props {
 const { heading = 'Frequently Asked Questions' } = Astro.props;
 ---
 
-<section aria-labelledby="faq-heading">
-  <h2 id="faq-heading">{heading}</h2>
-  <dl>
-    {BUSINESS.faq.map((item) => (
-      <details>
-        <summary>{item.question}</summary>
-        <dd>{item.answer}</dd>
-      </details>
-    ))}
-  </dl>
+<section id="faq" class="faq" aria-labelledby="faq-heading">
+  <div class="wrap">
+    <h2 id="faq-heading">{heading}</h2>
+    <div class="list">
+      {BUSINESS.faq.map((item) => (
+        <details class="item">
+          <summary class="question">{item.question}</summary>
+          <div class="answer">{item.answer}</div>
+        </details>
+      ))}
+    </div>
+  </div>
 </section>
+
+<style>
+  .faq {
+    background: #fff6ea;
+    padding: clamp(48px, 7vw, 90px) clamp(20px, 5vw, 64px);
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: clamp(34px, 5vw, 52px);
+    color: #d82b27;
+    margin: 0 0 28px;
+    text-align: center;
+  }
+  .list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+  }
+  .item {
+    background: #ffffff;
+    border: 2px solid #f0dfcb;
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .question {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    font-weight: 800;
+    font-size: 17px;
+    color: #2b1a12;
+    cursor: pointer;
+    list-style: none;
+  }
+  .question::-webkit-details-marker {
+    display: none;
+  }
+  .question::after {
+    content: '+';
+    flex-shrink: 0;
+    color: #d82b27;
+    font-size: 20px;
+    font-weight: 800;
+    transition: transform 0.2s;
+  }
+  .item[open] .question::after {
+    transform: rotate(45deg);
+  }
+  .answer {
+    margin: 0;
+    padding: 0 20px 18px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #5a4438;
+    font-weight: 500;
+  }
+</style>

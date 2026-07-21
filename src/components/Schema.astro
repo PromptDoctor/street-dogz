@@ -5,7 +5,7 @@ const {
   domain, name, legalName, phone, email,
   streetAddress, addressLocality, addressRegion, postalCode, addressCountry,
   geo, description, businessType, priceRange, areaServed,
-  openingHours, foundingDate, founders, services, faq,
+  openingHours, foundingDate, founders, services, faq, menu,
   logo, logoRaster, ogImage, social,
 } = BUSINESS;
 
@@ -35,20 +35,23 @@ const schema = {
       url: domain,
       logo: logoSchemaUrl,
       image: `${domain}${ogImage}`,
+      ...(menu?.length ? { hasMenu: `${domain}/#menu` } : {}),
       ...(priceRange ? { priceRange } : {}),
-      address: {
+       address: {
         '@type': 'PostalAddress',
-        streetAddress,
+        ...(streetAddress ? { streetAddress } : {}),
         addressLocality,
         addressRegion,
-        postalCode,
+        ...(postalCode ? { postalCode } : {}),
         addressCountry,
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: geo.latitude,
-        longitude: geo.longitude,
-      },
+       },
+      ...(geo ? {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: geo.latitude,
+          longitude: geo.longitude,
+        },
+      } : {}),
       areaServed: areaServed.map((area) => ({ '@type': 'City', name: area })),
       ...(openingHours ? { openingHours } : {}),
       ...(foundingDate ? { foundingDate } : {}),

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "check": "astro check",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -19,7 +20,13 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "esbuild@0.27.7": true
   }
 }

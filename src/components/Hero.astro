@@ -1,0 +1,205 @@
+---
+import { Image } from 'astro:assets';
+import mascot from '../assets/images/logo.png';
+import { BUSINESS } from '../config/business';
+import { toTelHref } from '../utils/phone';
+
+const telHref = toTelHref(BUSINESS.phone);
+
+const marqueeText =
+  'BRAT AVE ★ NACHO BLVD ★ POLISH ST ★ HOTDOG DR ★ SAUSAGE LN ★ BRAT AVE ★ NACHO BLVD ★ POLISH ST ★ HOTDOG DR ★ SAUSAGE LN ★ ';
+---
+
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="copy">
+      <div class="badge">St. Louis's hotdog truck since {BUSINESS.foundingDate}</div>
+      <h1>STREET DOGZ</h1>
+      <p class="tagline">{BUSINESS.tagline}</p>
+      <div class="ctas">
+        <a href="#book" class="btn btn-book">Book Us</a>
+        <a href="#menu" class="btn btn-menu">See the Menu</a>
+      </div>
+      <div class="contact-links">
+        <a href={telHref}>☎ {BUSINESS.phone}</a>
+        <a href={`mailto:${BUSINESS.email}`}>✉ {BUSINESS.email}</a>
+      </div>
+    </div>
+    <div class="mascot-wrap">
+      <Image
+        src={mascot}
+        alt={`${BUSINESS.name} cartoon hotdog mascot bus`}
+        width={400}
+        class="mascot"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>{marqueeText}</span>
+    <span>{marqueeText}</span>
+  </div>
+</div>
+
+<style>
+  .hero {
+    background: linear-gradient(160deg, #ffc20e 0%, #f7941d 55%, #ed6a1f 100%);
+    padding: clamp(36px, 7vw, 80px) clamp(20px, 5vw, 64px) 0;
+    overflow: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 64px);
+  }
+  .copy {
+    flex: 1 1 420px;
+    min-width: 300px;
+    text-align: left;
+    padding-bottom: clamp(32px, 6vw, 72px);
+  }
+  .badge {
+    display: inline-block;
+    background: #7d6bb0;
+    color: #fff6ea;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 999px;
+    transform: rotate(-2deg);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+  }
+  h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: clamp(52px, 9vw, 104px);
+    line-height: 0.95;
+    margin: 18px 0 8px;
+    color: #d82b27;
+    text-shadow: 3px 3px 0 #fff6ea, 6px 6px 0 rgba(0, 0, 0, 0.15);
+  }
+  .tagline {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: clamp(22px, 3.5vw, 34px);
+    color: #2b1a12;
+    margin: 0 0 22px;
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+  .btn {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 22px;
+    padding: 14px 30px 10px;
+    border-radius: 14px;
+    display: inline-block;
+    color: #fff6ea;
+  }
+  .btn-book {
+    background: #d82b27;
+    box-shadow: 0 5px 0 #8f1714;
+  }
+  .btn-book:hover {
+    color: #fff6ea;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #8f1714;
+  }
+  .btn-menu {
+    background: #3e9b4f;
+    box-shadow: 0 5px 0 #26662f;
+  }
+  .btn-menu:hover {
+    color: #fff6ea;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #26662f;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 20px;
+  }
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #2b1a12;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .contact-links a:hover {
+    color: #d82b27;
+  }
+  .mascot-wrap {
+    flex: 0 1 380px;
+    min-width: 260px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+  }
+  .mascot {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+    animation: sd-wiggle 4s ease-in-out infinite;
+    transform-origin: 50% 90%;
+  }
+  @keyframes sd-wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .marquee-wrap {
+    background: #7d6bb0;
+    color: #fff6ea;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    border-top: 4px solid #2b1a12;
+    border-bottom: 4px solid #2b1a12;
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 0;
+    animation: sd-marquee 22s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track span {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  @keyframes sd-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mascot,
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>
