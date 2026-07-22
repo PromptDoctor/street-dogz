@@ -24,6 +24,9 @@ const telHref = toTelHref(BUSINESS.phone);
       <BookingForm accessKey={accessKey} client:visible />
     </div>
   </div>
+  <div class="more-questions">
+    <a href="/pricing">Have some questions? Click here →</a>
+  </div>
 </section>
 
 <style>
@@ -83,6 +86,20 @@ const telHref = toTelHref(BUSINESS.phone);
     border-radius: 20px;
     padding: clamp(20px, 3vw, 32px);
     box-shadow: 0 8px 0 #d82b27, 0 16px 28px rgba(0, 0, 0, 0.15);
+  }
+  .more-questions {
+    max-width: 1080px;
+    margin: 28px auto 0;
+    text-align: center;
+  }
+  .more-questions a {
+    color: #2b1a12;
+    font-weight: 800;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+  .more-questions a:hover {
+    color: #8f1714;
   }
 </style>
 

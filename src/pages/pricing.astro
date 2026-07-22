@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { BUSINESS } from '../config/business';
+
+const title = 'Food Truck Catering Pricing | StreetDogz Hot Dog Food Truck';
+const description =
+  'StreetDogz catering pricing: host-pays corporate packages from $1,200, or guest-pays festival-style events with a $1,400 minimum guarantee. St. Louis food truck catering.';
+---
+
+<BaseLayout title={title} description={description} schema={false}>
+  <Header />
+
+  <main>
+    <section class="intro">
+      <div class="wrap">
+        <h1>Pricing &amp; Packages</h1>
+        <p class="lede">
+          Every event is different, so we keep it simple: there are two ways to book StreetDogz. Here's exactly what each one costs and what's included.
+        </p>
+      </div>
+    </section>
+
+    <section class="options">
+      <div class="wrap">
+        <div class="option">
+          <h2>Option 1 — Host Pays (Corporate &amp; Private)</h2>
+          <p class="best-for"><strong>Best for:</strong> Corporate events, employee appreciation days, and private parties where the host covers the bill.</p>
+          <p><strong>The baseline:</strong> Our food minimum starts at <strong>$1,200</strong> Monday through Thursday and <strong>$1,400</strong> Friday through Sunday. That includes one hour of setup and up to three hours of live service.</p>
+          <p><strong>The perks:</strong> Flexible all-in flat-rate corporate packages, plus a ticket system that keeps your costs predictable — you tell us how many guests you're covering, we hand out that many tickets, and guests redeem one per meal. When the tickets run out, so does the tab. No surprises on your invoice.</p>
+        </div>
+
+        <div class="option">
+          <h2>Option 2 — Guests Pay (Festival Style)</h2>
+          <p class="best-for"><strong>Best for:</strong> Neighborhood block parties, public festivals, and community events where guests buy their own meals at the window.</p>
+          <p><strong>How it works:</strong> Your guests order and pay individually. We ask for a <strong>$1,400</strong> minimum guarantee on any day of the week. If window sales hit that number, you pay nothing. If sales fall short, you cover the difference.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <a href="/#book" class="btn-book">Ready to book?</a>
+        <p class="still-questions">
+          Still have questions? <a href={`mailto:${BUSINESS.email}`}>Email {BUSINESS.email}</a> and we'll get right back to you.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .intro,
+  .options,
+  .cta {
+    padding: clamp(48px, 7vw, 90px) clamp(20px, 5vw, 64px);
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .intro {
+    background: #fff6ea;
+    padding-bottom: 0;
+  }
+  h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: clamp(38px, 5.5vw, 60px);
+    color: #d82b27;
+    line-height: 1;
+    margin: 0 0 18px;
+    text-align: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+  }
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #5a4438;
+    text-align: center;
+    margin: 0;
+  }
+  .options {
+    background: #fff6ea;
+  }
+  .options .wrap {
+    display: grid;
+    gap: 20px;
+  }
+  .option {
+    background: #ffffff;
+    border: 2px solid #f0dfcb;
+    border-radius: 14px;
+    padding: 28px clamp(20px, 4vw, 32px);
+  }
+  h2 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: clamp(24px, 3.5vw, 34px);
+    color: #d82b27;
+    margin: 0 0 14px;
+    line-height: 1.1;
+  }
+  .option p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #5a4438;
+    font-weight: 500;
+    margin: 0 0 14px;
+  }
+  .option p:last-child {
+    margin-bottom: 0;
+  }
+  .best-for {
+    color: #2b1a12;
+  }
+  .option strong {
+    color: #2b1a12;
+    font-weight: 800;
+  }
+  .cta {
+    background: #fff6ea;
+    text-align: center;
+  }
+  .btn-book {
+    display: inline-block;
+    background: #d82b27;
+    color: #fff6ea;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 22px;
+    padding: 14px 30px 10px;
+    border-radius: 14px;
+    box-shadow: 0 5px 0 #8f1714;
+  }
+  .btn-book:hover {
+    color: #fff6ea;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #8f1714;
+  }
+  .still-questions {
+    margin: 22px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5a4438;
+  }
+</style>

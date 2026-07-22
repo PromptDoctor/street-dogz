@@ -240,7 +240,7 @@ export const BUSINESS: Business = {
     {
       question: "Do you cater private events and birthday parties?",
       answer:
-        "Yes. StreetDogz books private events including birthday parties, graduations, family reunions and company gatherings throughout the St. Louis metro area. Call (314) 782-5423 or email streetdogz314@gmail.com to check availability for your date.",
+        "Yes. StreetDogz books private events including birthday parties, graduations, family reunions and company gatherings throughout the St. Louis metro area. Call +1 314-782-5423 or email streetdogz314@gmail.com to check availability for your date.",
     },
     {
       question: "How do I book the food truck for my event?",
@@ -250,7 +250,7 @@ export const BUSINESS: Business = {
     {
       question: "Is there a minimum charge to book StreetDogz?",
       answer:
-        "Yes, there is a minimum fee for private and catered events. The exact minimum depends on your guest count, location and event length — reach out and we'll give you a quote.",
+        "Yes. Our food minimum starts at $1,200 Monday through Thursday and $1,400 Friday through Sunday, which includes setup and up to three hours of service. Full details are on our pricing page.",
     },
     {
       question: "What areas do you serve?",
