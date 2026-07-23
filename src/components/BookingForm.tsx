@@ -24,7 +24,7 @@ const ITEM_CHOICES = [
 ];
 
 export default function BookingForm({
-  endpoint = import.meta.env.PUBLIC_WEB3FORMS_URL,
+  endpoint = import.meta.env.PUBLIC_WEB3FORMS_URL ?? 'https://api.web3forms.com/submit',
   accessKey,
 }: Props) {
   const [status, setStatus] = useState<Status>('idle');
@@ -77,7 +77,7 @@ export default function BookingForm({
   const disabled = status === 'submitting';
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="bf-form">
+    <form onSubmit={handleSubmit} className="bf-form">
       <input type="hidden" name="access_key" value={accessKey} />
       <input type="hidden" name="subject" value="Booking request" />
       <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} aria-hidden="true" />
@@ -287,7 +287,7 @@ export default function BookingForm({
         {disabled ? 'Sending…' : 'Send Booking Request'}
       </button>
       <p className="bf-fineprint">
-        * Event minimum is required. ** Event date and time will not be secured until minimum deposit is paid in full.
+        † Event minimum is required. †† Event date and time will not be secured until minimum deposit is paid in full.
       </p>
     </form>
   );
