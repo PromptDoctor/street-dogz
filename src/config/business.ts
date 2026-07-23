@@ -250,7 +250,7 @@ export const BUSINESS: Business = {
     {
       question: "Is there a minimum charge to book StreetDogz?",
       answer:
-        "Yes. Our food minimum starts at $1,200 Monday through Thursday and $1,400 Friday through Sunday, which includes setup and up to three hours of service. Full details are on our pricing page.",
+        "Yes. Our food minimum starts at $800 Monday through Thursday and $900 Friday through Sunday, which includes setup and up to three hours of service. Full details are on our pricing page.",
     },
     {
       question: "What areas do you serve?",
